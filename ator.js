@@ -1,9 +1,10 @@
 //código do ator
-let xAtor = 100
+let xAtor = 85
 let yAtor = 365
 let colisao = false
 let larguraAtor = 30
 let alturaAtor = 30
+let meusPontos = 0
 
 function mostraAtor() {
   image(imagemDoAtor, xAtor, yAtor, larguraAtor, alturaAtor)
@@ -28,14 +29,28 @@ function verificaColisao() {
       alturaCarro,
       xAtor,
       yAtor,
-      20
+      15
     )
     if (colisao) {
-      colidiu()
+      voltaAtorParaPosicaoInicial()
     }
   }
 }
 
-function colidiu() {
+function voltaAtorParaPosicaoInicial() {
   yAtor = 365
+}
+
+function incluiPontos() {
+  textAlign(CENTER)
+  textSize(25)
+  fill(color(255, 240, 70))
+  text(meusPontos, width / 5, 27)
+}
+
+function marcaPontos() {
+  if (yAtor < 15) {
+    meusPontos += 1
+    voltaAtorParaPosicaoInicial()
+  }
 }
